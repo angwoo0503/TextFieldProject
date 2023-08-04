@@ -27,7 +27,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.borderStyle = .roundedRect
         textField.clearButtonMode = .always
         textField.returnKeyType = .next
+        
+        
+        textField.becomeFirstResponder()
     }
+    
+    // 화면의 탭을 감지하는 메서드
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        // textField.resignFirstResponder()
+    }
+    
     
     // 텍스트필드의 입력을 시작할 때 호출 (시작할지 말지의 여부 허락하는 것)
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -88,7 +98,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-
+        textField.resignFirstResponder()
     }
  
     
